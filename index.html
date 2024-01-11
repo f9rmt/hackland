@@ -2,7 +2,7 @@
 <!-- Theme: #0A0A09; #FF4000; #303633; #E0F2E9; -->
 <html>
     <head>
-        <meta name = "description" content = "HackLand337228">
+        <meta name = "description" content = "HackLand">
         <title>HackLand</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
@@ -48,6 +48,11 @@
                 border-radius: 0.5em;
                 border: 0;
                 line-height: 2em;
+            }
+            
+            #search, #h {
+                box-sizing: border-box;
+                max-width: 50vw;
             }
 
             #content {
@@ -165,7 +170,7 @@
                         <tr>
                             <td></td>
                             <td>
-                                <h1>HackLand</h1>
+                                <h1 id="h">HackLand</h1>
                             </td>
                             <td>
                                 <input id="search" type="text" placeholder="Search..." onchange="search()">
