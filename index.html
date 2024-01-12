@@ -119,7 +119,7 @@
             const data;
             const xhr = new XMLHttpRequest();
             xhr.overrideMimeType("application/json");
-            xhr.open('GET', 'data.json', true);
+            xhr.open('GET', 'pages/pages.json', true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status == "200") {
                     data = JSON.parse(xhr.responseText);
