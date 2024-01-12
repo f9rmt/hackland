@@ -112,10 +112,17 @@
         </style>
 
         <script>
-            const data = [
+          <!-- const data = [
                 ["Dude Theft Wars", "**Mod menu with 120+ functions\nGame version: 0.9.0.9B1**", "https://download.com", "dude.jpg"],
                 ["Chicken Gun", "**Soon...**", "https://download.com", "chg.jpg"]
             ];
+            -->
+            
+            function loadData(callback) {
+            fetch('pages.json')
+                .then(response => response.json())
+                .then(callback);
+            }
 
             function markdown(string) {
                 return string
@@ -129,6 +136,7 @@
                 const text = document.querySelector("#search").value?.toLowerCase() || "";
                 const params = text.split(/\s+/);
                 const results = [];
+                loadData(data => {
                 for (const [title, description, download, img] of data) {
                     let count = 0;
                     for (const query of params) {
@@ -140,6 +148,7 @@
                         const bg = img == null ? "background: #E0F2E9;" : "background-image: linear-gradient(to right, #E0F2E9, #E0F2E922), url(\"img/" + img + "\");";
                         results.push([count, "<div style='" + bg + "' class='item'><h2>" + title + "</h2><br><p style='width: 70%;'>" + markdown(description) + "</p><br><a class='download btn' href='" + download + "'>Download</a></div>"]);
                     }
+                }
                 }
                 results.sort((a, b) => b[0] - a[0]);
                 if (results.length) {
