@@ -118,11 +118,22 @@
             ];
             -->
             
-            function loadData(callback) {
-            fetch('pages.json')
-                .then(response => response.json())
-                .then(callback);
-            }
+            let data = [];
+
+async function fetchData() {
+    try {
+        const response = await fetch('pages.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+        const jsonData = await response.json();
+        data = jsonData;
+    } catch (error) {
+        console.error('Fetch operation failed: ', error);
+    }
+}
+
+fetchData();
 
             function markdown(string) {
                 return string
@@ -136,7 +147,6 @@
                 const text = document.querySelector("#search").value?.toLowerCase() || "";
                 const params = text.split(/\s+/);
                 const results = [];
-                loadData(data => {
                 for (const [title, description, download, img] of data) {
                     let count = 0;
                     for (const query of params) {
@@ -148,7 +158,6 @@
                         const bg = img == null ? "background: #E0F2E9;" : "background-image: linear-gradient(to right, #E0F2E9, #E0F2E922), url(\"img/" + img + "\");";
                         results.push([count, "<div style='" + bg + "' class='item'><h2>" + title + "</h2><br><p style='width: 70%;'>" + markdown(description) + "</p><br><a class='download btn' href='" + download + "'>Download</a></div>"]);
                     }
-                }
                 }
                 results.sort((a, b) => b[0] - a[0]);
                 if (results.length) {
