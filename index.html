@@ -112,28 +112,10 @@
         </style>
 
         <script>
-          <!-- const data = [
+          const data = [
                 ["Dude Theft Wars", "**Mod menu with 120+ functions\nGame version: 0.9.0.9B1**", "https://download.com", "dude.jpg"],
                 ["Chicken Gun", "**Soon...**", "https://download.com", "chg.jpg"]
             ];
-            -->
-            
-            let data = [];
-
-async function fetchData() {
-    try {
-        const response = await fetch('pages.json');
-        if (!response.ok) {
-            throw new Error('Network response was not ok.');
-        }
-        const jsonData = await response.json();
-        data = jsonData;
-    } catch (error) {
-        console.error('Fetch operation failed: ', error);
-    }
-}
-
-fetchData();
 
             function markdown(string) {
                 return string
