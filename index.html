@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!-- Theme: #0A0A09; #FF4000; #303633; #E0F2E9; -->
+<html>
+    <head>
+        <!-- Yandex.RTB -->
+        <script>window.yaContextCb=window.yaContextCb||[]</script>
+        <script src="https://yandex.ru/ads/system/context.js" async></script>
+        
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" type="image/png" href="favicon.png">
+        <meta name="description" content="hackland, HackLand, хакланд, хакленд, читы, cheat, hackland читы, хакланд читы, чикен ган читы, chicken gun cheat">
+        <meta name="keywords" content="hackland, HackLand, хакланд, хакленд, читы, cheat, hackland читы, хакланд читы, чикен ган читы, chicken gun cheat">
+        <title>HackLand</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            * {
+                margin: 0;
+            }
+
+            body, html {
+                background: #303633;
+                height: 100%;
+            }
+
+            #header {
+                position: sticky;
+                top: 0;
+                background: #0A0A09;
+                color: #FF4000;
+                line-height: 3em;
+                text-align: center;
+                z-index: 1;
+            }
+
+            #header td {
+                width: 33%;
+            }
+
+            .item {
+                background-size: cover;
+                color: #0A0A09;
+                margin: 10px 5vw 10px 5vw;
+                padding: 20px;
+                padding-bottom: calc(20px + 2em);
+                border-radius: 1em;
+                position: relative;
+            }
+
+            #search {
+                padding: 2px 2em 2px 5px;
+                background: url("img/search.svg") no-repeat right;
+                background-size: 1.5em;
+
+                background-color: #E0F2E9;
+                border-radius: 0.5em;
+                border: 0;
+                line-height: 2em;
+            }
+            
+            #search, #h {
+                box-sizing: border-box;
+                max-width: 50vw;
+            }
+
+            #content {
+              margin-top: 1em;
+            }
+
+            .download {
+                background: url("img/download.svg") no-repeat left;
+                background-color: #FF4000;
+                color: #0A0A09;
+
+                position: absolute;
+                right: 0.5em;
+                bottom: 0.5em;
+            }
+
+            .sad {
+                background: url("img/sad.svg") no-repeat left;
+                color: #0A0A09;
+            }
+
+            .yt {
+                background: url("img/youtube.svg") no-repeat left;
+            }
+            .tg {
+                background: url("img/telegram.svg") no-repeat left;
+            }
+            .dc {
+                background: url("img/discord.svg") no-repeat left;
+            }
+
+            .btn {
+                padding: 8px 8px 8px 1.2em;
+                background-size: 1em;
+
+                border-radius: 0.6em;
+                text-decoration: none;
+            }
+
+            #footer {
+                margin-top: 20px;
+                background-color: #0A0A09;
+                color: #E0F2E9;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100vw;
+                padding: 50px;
+                box-sizing: border-box;
+                text-align: center;
+            }
+
+            .contact {
+                color: #FF4000;
+            }
+
+        </style>
+
+        <script>
+          const data = [
+                ["Dude Theft Wars", "**Mod menu with 70+ functions [God mode, rapid fire, masskill, esp, object manager, etc...]\nGame version: 0.9.0.9B2**", "http://recut.ru/16QI", "dude.jpg"],
+                ["Hypper Sandbox", "**Game version: 0.4.9.4**", "https://ify.ac/1Jxy", "hypper.jpg"],
+                ["Chicken Gun", "**ESP, Teleports, Spam chat, Telekill, Object editor, God mode, money, Unlock all, Noclip, etc..\nGame version: 4.1.0**", "https://ify.ac/1GrI", "chg.jpg"],
+                ["StrikeFortressBox", "**ESP, Teleports, Spam chat, Telekill, Object editor, God mode, money, Unlock all, Noclip, etc..\nGame version: 1.9.0**", "https://ify.ac/1GXh", "fortressbox.jpg"],
+                ["Bhop Pro", "**Speed Hack, Teleports, Spam chat, Object editor, God mode, money, Unlock all, Noclip, etc..\nGame version: 2.4.5**", "https://ify.ac/1L4R", "bhoppro.jpg"],
+		["Sandbox 3D", "**God mode, Telekill, Teleports, Spam chat, Object editor, Anti kick, Max money, Esp, Noclip, etc..\nGame version: 0.3.9**", "https://ify.ac/1H2E", "sandbox3d.jpg"]
+            ];
+
+            function markdown(string) {
+                return string
+                  .replaceAll("\n", "</br>")
+                  .replaceAll(/\*\*(.*)\*\*/g, "<b>$1</b>")
+                  .replaceAll(/__(.*)__/g, "<u>$1</u>")
+                  .replaceAll(/_(.*)_/g, "<i>$1</i>");
+            }
+
+            function search() {
+                const text = document.querySelector("#search").value?.toLowerCase() || "";
+                const params = text.split(/\s+/);
+                const results = [];
+                for (const [title, description, download, img] of data) {
+                    let count = 0;
+                    for (const query of params) {
+                        if (title.toLowerCase().includes(query) || description.toLowerCase().includes(query)) {
+                            count ++;
+                        }
+                    }
+                    if (count) {
+                        const bg = img == null ? "background: #E0F2E9;" : "background-image: linear-gradient(to right, #E0F2E9, #E0F2E922), url(\"img/" + img + "\");";
+                        results.push([count, "<div style='" + bg + "' class='item'><h2>" + title + "</h2><br><p style='width: 70%;'>" + markdown(description) + "</p><br><a class='download btn' href='" + download + "'>Download</a></div>"]);
+                    }
+                }
+                results.sort((a, b) => b[0] - a[0]);
+                if (results.length) {
+                    document.querySelector("#content").innerHTML = results.map(a => a[1]).join("");
+                } else {
+                    document.querySelector("#content").innerHTML = "<div style='text-align: center; padding-top: 20px;' class=''><span class='sad btn'>Nothing found</span></div>";
+                }
+            }
+
+            function adjust() {
+                document.querySelector("#cbody").style["padding-bottom"] = document.querySelector("#footer").offsetHeight + 20 + "px";
+            }
+
+            window.onload = () => {
+                adjust();
+                search();
+            }
+
+            window.onresize = adjust;
+        </script>
+    </head>
+    <body>
+        <!-- Yandex.RTB R-A-9358372-1 -->
+<div id="yandex_rtb_R-A-9358372-1"></div>
+<script>
+window.yaContextCb.push(()=>{
+	Ya.Context.AdvManager.render({
+		"blockId": "R-A-9358372-1",
+		"renderTo": "yandex_rtb_R-A-9358372-1"
+	})
+})
+</script>
+        <div style="min-height: 100%; position: relative;">
+            <div id="cbody">
+                <!-- Header -->
+                <div id="header">
+                    <table style="width: 100%">
+                        <tr>
+                            <td></td>
+                            <td>
+                                <h1 id="h">HackLand</h1>
+                            </td>
+                            <td>
+                                <input id="search" type="text" placeholder="Search..." onchange="search()">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Content (dynamically changed) -->
+                <div id="content"></div>
+            </div>
+
+            <!-- Footer -->
+            <div id="footer">
+                <span style="margin-right: 10px;">Contact us:</span>
+                <a class="yt btn contact" href="https://youtube.com/@hacklandy">YouTube</a>
+                <a class="tg btn contact" href="https://t.me/hacklandy">Telegram</a>
+                <a class="dc btn contact" href="https://discord.gg/RYtnsWYTaa">Discord</a>
+                <br>
+                <br>
+                Copyright <span id="year"></span> by HackLand.
+                <script> document.querySelector("#year").innerText = new Date().getFullYear(); </script>
+                We are in no way affiliated with the companies producing the mentioned games.
+                However we own the software which we provide to download.
+                Distributing the software by any means except sharing the link to this website is prohibited.
+                Website created by <a style="color: #E0F2E9;" href="https://github.com/gXLg">/dev/null</href>.
+            </div>
+        <div>
+    </body>
+</html>
